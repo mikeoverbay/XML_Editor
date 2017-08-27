@@ -1,0 +1,13 @@
+diffuseMap2
+specularMap
+normalMap
+alphaReference
+alphaTestEnable
+doubleSided
+diffuseMap
+metallicGlossMap
+g_useNormalPackDXT1
+g_defaultPBSConversionParams
+g_metallicConversions
+g_glossConversions
+g_albedoConversions

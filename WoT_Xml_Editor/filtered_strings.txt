@@ -1,0 +1,26 @@
+# <-- this means comment line
+# There can be NO blank lines!
+# I have to replace 'diffuseMap2' with a temp name and then replace
+# the temp name after the first filter pass. Hence the following name.
+THISBAD
+diffuseMap
+# diffuseMap2 <-- this is dealt with in the filter logic. Leave it commented out!
+specularMap
+normalMap
+alphaReference
+alphaTestEnable
+doubleSided
+metallicGlossMap
+g_useNormalPackDXT1
+g_defaultPBSConversionParams
+g_metallicConversions
+g_glossConversions
+g_albedoConversions
+excludeMaskAndAOMap
+metallicDetailMap
+g_detailPower
+g_detailPowerAlbedo
+g_detailPowerGloss
+g_detailUVTiling
+g_useDetailMetallic
+g_maskBias

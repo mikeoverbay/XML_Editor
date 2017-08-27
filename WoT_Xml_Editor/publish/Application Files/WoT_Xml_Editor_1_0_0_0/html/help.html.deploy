@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<p><strong>General Help.</strong></p>
+<p>To change the colors, click the one you want to change FIRST<br>
+  and than, pick the color on the right.<br>
+  The Editor will remember your color scheme and will<br>
+  be setup the next time you load the app.<br>
+</p>
+<hr>
+<p><strong>BACK UP</strong> before using this tool. Overwriting an XML with<br>
+  bad code can ruin your game and you may need to download<br>
+  the entire thing again. NOT a good thing!!<br>
+</p>
+<hr>
+<p><strong>Disclaimer:</strong><br>
+Use at your one risk. If you break your game with this tool,<br>
+  It is NOT my fault.</p>
+<p>The text box will only work with mono spaced fonts.<br>
+That is why the list is short when you try to change them.<br>
+It does however, do syntax highlighing and very fast. </p>
+<p>The World of Tank XML has a non-standard XML format.<br>
+  This app will display it correctly because I spend 2 days<br>
+figuring out how to deal with the bogus property items.</p>
+<p>There is a file in the installed folder( filtered_strings.txt ) that contains a list<br>
+  of all these property entries (That I have found so far).<br>
+  If the XML display badly, look for what's after the<br>
+  &lt;property&gt; line(s) and add that text to the filtered_strings.txt<br>
+file. In order to display the XML correctly, these odd entries<br>
+must be wrapped in a temp tag before formatting and after,<br>
+the temp tags are removed. Its the only way I could make the<br>
+XML display correctly.<br>
+<br>
+This app uses a fantastic syntax highlighting control by <a href="http://www.codeproject.com/script/Membership/View.aspx?mid=1005558" rel="author"><span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Pavel Torgashov</span></span></a>.<br>
+For information and the license, <a href="http://www.codeproject.com/Articles/161871/Fast-Colored-TextBox-for-syntax-highlighting">check out this site.</a><br>
+</p>
+<p>If you like this app and use it, please consider donating.<br>
+  I'm old and out of work and any help would be more than kind!<br>
+  Thank you for using my application. <br>
+  Coffee_
+</p>
+<p>The donate should take you to TnMs PeekaPoos. We breed them. </p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="KFG62KM8TJVDE">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+</body>
+</html>
