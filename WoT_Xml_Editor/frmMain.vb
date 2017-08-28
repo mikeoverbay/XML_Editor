@@ -28,12 +28,17 @@ Public Class frmMain
 
 
 	Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
-		Dim arguments() As String = Environment.GetCommandLineArgs()
+        Dim arguments() As String = Environment.GetCommandLineArgs()
+
 		Dim ts = IO.File.ReadAllText(Application.StartupPath + "\filtered_strings.txt")
 		filterlist = ts.Split(ControlChars.CrLf.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
 		set_keywords()
-		Me.Show()
-		'frmSetColors.Show()
+        Me.Show()
+        Application.DoEvents()
+        Application.DoEvents()
+        Application.DoEvents()
+        Application.DoEvents()
+        'frmSetColors.Show()
 		get_color_settings()
 		set_styles()
 		Me.Text = "World of Tanks Binary XML Converter and Editor :"
@@ -44,28 +49,29 @@ Public Class frmMain
             System.IO.Directory.CreateDirectory(Temp_Storage)
         End If
 
-
+        associate_files()
 		'For i = 1 To arguments.Length - 1
 		'	fctb.Text += i.ToString + ":" + arguments(i) + vbCrLf
 		'Next
 		'If (Not System.IO.Directory.Exists(Application.StartupPath + "\temp")) Then
 		'	System.IO.Directory.CreateDirectory(Application.StartupPath + "\temp")
-		'End If
+        'End If
+        Dim fs As String = ""
 		If arguments IsNot Nothing Then
-			'	For i = 0 To arguments.Length - 1
-			'		fs += arguments(i) + vbCrLf
-			'	Next
-			'	IO.File.WriteAllText("C:\temp_\test.txt", fs)
-			If arguments.Length > 1 Then
-				Dim s1 = arguments(1)
-				If s1 <> String.Empty Then
-					opened_file_name = s1
-					Me.Text = "File: " + opened_file_name
-					openVisual(s1)
-				End If
-			End If
+            For i = 0 To arguments.Length - 1
+                fs += arguments(i) + vbCrLf
+            Next
+            If arguments.Length > 1 Then
+                Dim s1 = arguments(1)
+                If s1 <> String.Empty Then
+                    opened_file_name = s1
+                    Me.Text = "File: " + opened_file_name
+                    'IO.File.WriteAllText("C:\temp_\test.txt", fs + vbCrLf + "Made it")
+                    openVisual(s1)
+                End If
+            End If
 
-		End If
+        End If
 	End Sub
 	Private Sub get_color_settings()
 		colors(0) = My.Settings.numeric
@@ -95,9 +101,10 @@ Public Class frmMain
 		Next
 	End Sub
 	Private Sub associate_files()
-        CreateFileAssociation(".visual_processed", "wotvisual", "Wot visual file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
-        CreateFileAssociation(".visual", "wotvisual", "Wot visual file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
-        CreateFileAssociation(".chunk", "wotchunk", "Wot chunk file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+        CreateFileAssociation(".model", "wot_visual_file", "Wot model file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+        CreateFileAssociation(".visual_processed", "wot_visual_file", "Wot visual_processed file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+        CreateFileAssociation(".visual", "wot_visual_file", "Wot Visual File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+        CreateFileAssociation(".chunk", "wot_visual_file", "Wot Chunk File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
 	End Sub
 	<System.Runtime.InteropServices.DllImport("shell32.dll")> Shared Sub _
 	 SHChangeNotify(ByVal wEventId As Integer, ByVal uFlags As Integer, _
@@ -109,46 +116,53 @@ Public Class frmMain
 	' ClassName is the name of the associated class (eg "CADDoc")
 	' Description is the textual description (eg "CAD Document"
 	' ExeProgram is the app that manages that extension (eg "c:\Cad\MyCad.exe")
-	Function CreateFileAssociation(ByVal extension As String, _
-	 ByVal className As String, ByVal description As String, _
-	 ByVal exeProgram As String) As Boolean
-		Const SHCNE_ASSOCCHANGED = &H8000000
-		Const SHCNF_IDLIST = 0
+    Function CreateFileAssociation(ByVal extension As String, _
+     ByVal className As String, ByVal description As String, _
+     ByVal exeProgram As String) As Boolean
 
-		' ensure that there is a leading dot
-		If extension.Substring(0, 1) <> "." Then
-			extension = "." & extension
-		End If
+        Const SHCNE_ASSOCCHANGED = &H8000000
+        Const SHCNF_IDLIST = 0
 
-        Dim key1, key2, key3 As Microsoft.Win32.RegistryKey
-		Try
-			' create a value for this key that contains the classname
-			key1 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(extension)
-			key1.SetValue("", className)
-			' create a new key for the Class name
-			key2 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(className)
-			key2.SetValue("", description)
-			' associate the program to open the files with this extension
-			key3 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(className & _
-				 "\Shell\Open\Command")
-			key3.SetValue("", exeProgram & " ""%1""")
-		Catch e As Exception
-			Return False
-		Finally
-			If Not key1 Is Nothing Then key1.Close()
-			If Not key2 Is Nothing Then key2.Close()
-			If Not key3 Is Nothing Then key3.Close()
-		End Try
+        ' ensure that there is a leading dot
+        If extension.Substring(0, 1) <> "." Then
+            extension = "." & extension
+        End If
 
-		' notify Windows that file associations have changed
-		SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0)
-		Return True
-	End Function
+        Dim key1, key2, key3, key4 As Microsoft.Win32.RegistryKey
+        Try
+            ' create a value for this key that contains the classname
+            key1 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(extension)
+            key1.SetValue("", className)
+            ' create a new key for the Class name
+            key2 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(className)
+            key2.SetValue("", description)
+            ' associate the program to open the files with this extension
+            key3 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(className & _
+                 "\Shell\Open\Command")
+            key3.SetValue("", exeProgram & " ""%1""")
+            Dim extstr = "Software\Microsoft\Windows\CurrentVersion\ Explorer\FileExts\" + extension + "\UserChoice"
+            key4 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(extstr, True)
+            If key4 IsNot Nothing Then
+                key4.SetValue("", "application\" + exeProgram)
+            End If
+        Catch e As Exception
+            Return False
+        Finally
+            If Not key1 Is Nothing Then key1.Close()
+            If Not key2 Is Nothing Then key2.Close()
+            If Not key3 Is Nothing Then key3.Close()
+            If Not key4 Is Nothing Then key3.Close()
+        End Try
+
+        ' notify Windows that file associations have changed
+        SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0)
+        Return True
+    End Function
 
 
 	Private Sub OpenToolStripButton_Click(sender As Object, e As EventArgs) Handles OpenToolStripButton.Click
-        OpenFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
-		OpenFileDialog1.FileName = ""
+        OpenFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
+        OpenFileDialog1.FileName = ""
 		position = 1
 		Try
 			fctb.Text = ""
@@ -164,7 +178,7 @@ Public Class frmMain
 	End Sub
 
 	Private Sub SaveToolStripButton_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
-        SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
+        SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
 		SaveFileDialog1.FileName = opened_file_name
 		If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
