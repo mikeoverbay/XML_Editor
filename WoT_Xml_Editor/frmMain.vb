@@ -104,7 +104,7 @@ Public Class frmMain
         CreateFileAssociation(".model", "wot_visual_file", "Wot model file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".visual_processed", "wot_visual_file", "Wot visual_processed file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".visual", "wot_visual_file", "Wot Visual File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
-        CreateFileAssociation(".chunk", "wot_visual_file", "Wot Chunk File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+        CreateFileAssociation(".xml", "wot_visual_file", "XML File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
 	End Sub
 	<System.Runtime.InteropServices.DllImport("shell32.dll")> Shared Sub _
 	 SHChangeNotify(ByVal wEventId As Integer, ByVal uFlags As Integer, _
@@ -161,26 +161,26 @@ Public Class frmMain
 
 
 	Private Sub OpenToolStripButton_Click(sender As Object, e As EventArgs) Handles OpenToolStripButton.Click
-        OpenFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
+        OpenFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|XML (*.xml)|*.xml|All Files (*.*)|*.*"
         OpenFileDialog1.FileName = ""
-		position = 1
-		Try
-			fctb.Text = ""
-		Catch ex As Exception
+        position = 1
+        Try
+            fctb.Text = ""
+        Catch ex As Exception
 
-		End Try
-		If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-			opened_file_name = OpenFileDialog1.FileName
-			Me.Text = "File: " + opened_file_name
-			openVisual(OpenFileDialog1.FileName)
-		End If
+        End Try
+        If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            opened_file_name = OpenFileDialog1.FileName
+            Me.Text = "File: " + opened_file_name
+            openVisual(OpenFileDialog1.FileName)
+        End If
 
-	End Sub
+    End Sub
 
-	Private Sub SaveToolStripButton_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
-        SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|chunk (*.chunk)|*.chunk|All Files (*.*)|*.*"
-		SaveFileDialog1.FileName = opened_file_name
-		If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    Private Sub SaveToolStripButton_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
+        SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|XML (*.xml)|*.xml|All Files (*.*)|*.*"
+        SaveFileDialog1.FileName = opened_file_name
+        If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
             For i = 0 To 30
                 Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
@@ -190,10 +190,10 @@ Public Class frmMain
             txt = txt.Replace("  ", "")
             txt = txt.Replace(vbCrLf, "")
 
-			IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
-		End If
+            IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
+        End If
 
-	End Sub
+    End Sub
 
 	Private Sub CutToolStripButton_Click(sender As Object, e As EventArgs) Handles CutToolStripButton.Click
 		If fctb.Text.Length > 0 Then

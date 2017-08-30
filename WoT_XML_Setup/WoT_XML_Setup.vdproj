@@ -101,7 +101,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:..\\WoT_Xml_Editor\\WoT_XML_Setup_001.msi"
+        "OutputFilename" = "8:..\\WoT_XML_Setup_002.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -208,6 +208,11 @@
             "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.11.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5F188955F59C575306B5F115D8AEBD13"
+                    {
+                    "Name" = "8:FastColoredTextBox.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FastColoredTextBox.dll"
             "TargetName" = "8:"
@@ -380,15 +385,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WoT XML Editor"
-        "ProductCode" = "8:{FDA81D68-96B1-4A9A-BA74-8DCED8B99EB9}"
-        "PackageCode" = "8:{AA0174DC-A37E-4B3B-857D-D4702F7A0B4F}"
+        "ProductCode" = "8:{1AF97670-D367-40AF-A0FD-C9B0192080A2}"
+        "PackageCode" = "8:{BA3662C5-E448-47BE-A5A8-A9C0517CD305}"
         "UpgradeCode" = "8:{403A7759-248E-40F8-950B-28E5A38DC8B8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:Coffee_"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
