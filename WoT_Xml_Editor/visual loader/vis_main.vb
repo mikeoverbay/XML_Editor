@@ -55,17 +55,20 @@ Module vis_main
     Private Function PrettyPrint(XML As [String]) As [String]
         Dim Result As [String] = ""
         XML = fix_bad_tags(XML)
-
+        'another hack to fix WG's bad xml
+        XML = XML.Replace("<_", "<G_")
+        XML = XML.Replace("</_", "</G_")
         Dim MS As New MemoryStream()
 
         Dim xmlsettings As New XmlWriterSettings
         xmlsettings.Indent = True
         xmlsettings.NewLineOnAttributes = True
-        xmlsettings.Encoding = Encoding.Unicode
+        xmlsettings.Encoding = Encoding.UTF8
         xmlsettings.OmitXmlDeclaration = True
+        xmlsettings.CheckCharacters = True
+        xmlsettings.CloseOutput = True
         Dim W = XmlWriter.Create(MS, xmlsettings)
         Dim D As New XmlDocument()
-
         Try
             ' Load the XmlDocument with the XML.
             D.LoadXml(XML)
@@ -84,13 +87,15 @@ Module vis_main
 
             ' Extract the text from the StreamReader.
             Dim FormattedXML As [String] = SR.ReadToEnd()
+            'MS.Close()
+            'W.Close()
 
-            Result = FormattedXML
+            Result = FormattedXML.Replace("<G_", "<_")
+            Result = Result.Replace("</G_", "</_")
+
         Catch generatedExceptionName As XmlException
         End Try
 
-        MS.Close()
-        W.Close()
 
         Return Result
     End Function
@@ -111,19 +116,18 @@ Module vis_main
         'because xml headers cant have numbers at the start.
         PackedFileName = "bad_" + PackedFileName
         Dim xmlroot As XmlNode = xDoc.CreateNode(XmlNodeType.Element, PackedFileName, "")
-        xDoc.OuterXml.Replace("><", ">" + vbCrLf + "<")
+        'xDoc.OuterXml.Replace("><", ">" + vbCrLf + "<")
         PS.readElement(reader, xmlroot, xDoc, dictionary)
         Dim xml_string As String = xmlroot.InnerXml
 
         Dim strFilename As String = Temp_Storage + "\temp_xml.xml"
-        File.WriteAllText(strFilename, "<" + PackedFileName + ">" + _
-                                vbCrLf + xml_string + vbCrLf + "</" + PackedFileName + ">")
+        File.WriteAllText(strFilename, "<" + PackedFileName + ">" + xml_string + "</" + PackedFileName + ">")
 
         xDoc.AppendChild(xmlroot)
 
 
         Dim f As String = File.ReadAllText(strFilename)
-        f = f.Replace("shared", "<shared>shared</shared>")
+        f = f.Replace(">shared", "><shared>shared</shared>")
         File.Delete(strFilename)
         f = PrettyPrint(f)
         frmMain.fctb.Text = f.Replace("bad_", "")

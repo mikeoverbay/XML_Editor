@@ -105,7 +105,8 @@ Public Class frmMain
         CreateFileAssociation(".visual_processed", "wot_visual_file", "Wot visual_processed file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".visual", "wot_visual_file", "Wot Visual File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".xml", "wot_visual_file", "XML File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
-	End Sub
+        CreateFileAssociation(".settings", "wot_visual_file", "Settings File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
+    End Sub
 	<System.Runtime.InteropServices.DllImport("shell32.dll")> Shared Sub _
 	 SHChangeNotify(ByVal wEventId As Integer, ByVal uFlags As Integer, _
 	 ByVal dwItem1 As Integer, ByVal dwItem2 As Integer)
