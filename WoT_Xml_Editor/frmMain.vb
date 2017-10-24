@@ -183,13 +183,13 @@ Public Class frmMain
         SaveFileDialog1.FileName = opened_file_name
         If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
+            txt = txt.Replace("  ", "")
             For i = 0 To 30
                 Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
                 txt = ast
             Next
 
-            txt = txt.Replace("  ", "")
-            txt = txt.Replace(vbCrLf, "")
+            txt = txt.Replace(vbCrLf, vbLf)
 
             IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
         End If
