@@ -188,9 +188,11 @@ Public Class frmMain
                 Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
                 txt = ast
             Next
-
+            txt = txt.Replace("><", ">" + vbCrLf + "<")
             txt = txt.Replace(vbCrLf, vbLf)
-
+            txt = txt.Replace("<xmlref>", "<!--<xmlref>")
+            txt = txt.Replace("</xmlref>", "<xmlref>-->")
+            'txt = txt + vbLf
             IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
         End If
 
