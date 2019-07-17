@@ -184,7 +184,7 @@ Public Class frmMain
         If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
             txt = txt.Replace("  ", "")
-            For i = 0 To 30
+            For i = 30 To 0 Step -1
                 Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
                 txt = ast
             Next

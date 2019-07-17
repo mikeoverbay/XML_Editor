@@ -33,11 +33,12 @@ Module vis_main
 		End Sub
 	End Class
 	Private Function fix_bad_tags(xmlString As String)
-		'box all primitive tags.. Dont think there will ever be over 30 :-)
-		For i = 0 To 30
+        'box all primitive tags.. Dont think there will ever be over 30 :-)
+        xmlString = xmlString.Replace("<primitiveGroup> ", "<primitiveGroup>")
+        For i = 30 To 0 Step -1
             Dim ast = xmlString.Replace("<primitiveGroup>" + i.ToString, "<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>")
-			xmlString = ast
-		Next
+            xmlString = ast
+        Next
         'Dim tt2 = xmlString.Replace("diffuseMap2", "THISBAD")
         'xmlString = tt2
         '' box the messed up bad format
