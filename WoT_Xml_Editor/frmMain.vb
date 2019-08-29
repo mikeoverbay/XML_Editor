@@ -12,22 +12,39 @@ Imports System.Text.RegularExpressions
 Imports System.Drawing.Drawing2D
 Imports System.Xml
 Imports Microsoft.VisualBasic
+Imports System.Globalization
 
 Public Class frmMain
 	Dim position As Integer = 1
 	Dim opened_file_name As String = ""
 	Dim keyWords As String = ""
 	'----------------------------------------------
-	Public numeric_ As New TextStyle(Brushes.PaleGreen, Nothing, FontStyle.Bold)
-	Public tags_ As New TextStyle(Nothing, Nothing, FontStyle.Bold Or FontStyle.Underline)
+    Public numeric_ As New TextStyle(Brushes.PaleGreen, Nothing, FontStyle.Regular)
+    Public tags_ As New TextStyle(Nothing, Nothing, FontStyle.Regular Or FontStyle.Underline)
 	Public text_ As New TextStyle(Brushes.Gray, Nothing, FontStyle.Regular)
-	Public properties_ As New TextStyle(Brushes.PowderBlue, Nothing, FontStyle.Bold)
+    Public properties_ As New TextStyle(Brushes.PowderBlue, Nothing, FontStyle.Regular)
 	Public allother_ As New TextStyle(Brushes.LightSeaGreen, Nothing, FontStyle.Regular)
 
-	Dim SameWordsStyle As MarkerStyle = New MarkerStyle(New SolidBrush(Color.FromArgb(40, Color.Gray)))
+    Dim SameWordsStyle As MarkerStyle = New MarkerStyle(New SolidBrush(Color.FromArgb(40, Color.Gray)))
+
+    Private Sub frmMain_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.Modifiers = Keys.Control AndAlso e.KeyCode = Keys.S Then
+            SaveToolStripButton.PerformClick()
+        End If
+        If e.Modifiers = Keys.Control AndAlso e.KeyCode = Keys.O Then
+            OpenToolStripButton.PerformClick()
+        End If
+    End Sub
+
 
 
 	Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        My.Settings.Upgrade() ' upgrades to keep old settings
+
+        Dim nonInvariantCulture As System.Globalization.CultureInfo = New CultureInfo("en-US")
+        nonInvariantCulture.NumberFormat.NumberDecimalSeparator = "."
+        System.Threading.Thread.CurrentThread.CurrentCulture = nonInvariantCulture
+
         Dim arguments() As String = Environment.GetCommandLineArgs()
 
 		Dim ts = IO.File.ReadAllText(Application.StartupPath + "\filtered_strings.txt")
@@ -49,8 +66,9 @@ Public Class frmMain
             System.IO.Directory.CreateDirectory(Temp_Storage)
         End If
 
-        associate_files()
-		'For i = 1 To arguments.Length - 1
+        associate_files() 'broken in windows 10
+        Me.KeyPreview = True    'so i catch keyboard before despatching it
+        'For i = 1 To arguments.Length - 1
 		'	fctb.Text += i.ToString + ":" + arguments(i) + vbCrLf
 		'Next
 		'If (Not System.IO.Directory.Exists(Application.StartupPath + "\temp")) Then
@@ -72,6 +90,7 @@ Public Class frmMain
             End If
 
         End If
+
 	End Sub
 	Private Sub get_color_settings()
 		colors(0) = My.Settings.numeric
@@ -99,7 +118,8 @@ Public Class frmMain
 				text_style(i) = 0
 			End If
 		Next
-	End Sub
+    End Sub
+
 	Private Sub associate_files()
         CreateFileAssociation(".model", "wot_visual_file", "Wot model file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".visual_processed", "wot_visual_file", "Wot visual_processed file", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
@@ -107,6 +127,7 @@ Public Class frmMain
         CreateFileAssociation(".xml", "wot_visual_file", "XML File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
         CreateFileAssociation(".settings", "wot_visual_file", "Settings File", Application.StartupPath + "\" + "WoT_Xml_Editor.exe")
     End Sub
+
 	<System.Runtime.InteropServices.DllImport("shell32.dll")> Shared Sub _
 	 SHChangeNotify(ByVal wEventId As Integer, ByVal uFlags As Integer, _
 	 ByVal dwItem1 As Integer, ByVal dwItem2 As Integer)
@@ -190,8 +211,10 @@ Public Class frmMain
             Next
             txt = txt.Replace("><", ">" + vbCrLf + "<")
             txt = txt.Replace(vbCrLf, vbLf)
-            txt = txt.Replace("<xmlref>", "<!--<xmlref>")
-            txt = txt.Replace("</xmlref>", "<xmlref>-->")
+            If Not txt.Contains("!--<xmlref>") Then
+                txt = txt.Replace("<xmlref>", "<!--<xmlref>")
+                txt = txt.Replace("</xmlref>", "<xmlref>-->")
+            End If
             'txt = txt + vbLf
             IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
         End If
@@ -318,6 +341,7 @@ Public Class frmMain
         br = New SolidBrush(c)
         Return br
     End Function
+
     Private Sub fctb_TextChanged(sender As Object, e As FastColoredTextBoxNS.TextChangedEventArgs) Handles fctb.TextChanged
         SyntaxHighlight(sender, e)
     End Sub
