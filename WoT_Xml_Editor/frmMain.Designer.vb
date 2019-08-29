@@ -262,7 +262,7 @@ Partial Class frmMain
         Me.fctb.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.fctb.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.fctb.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.fctb.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fctb.Font = New System.Drawing.Font("Lucida Console", 9.75!)
         Me.fctb.ForeColor = System.Drawing.Color.White
         Me.fctb.HighlightFoldingIndicator = False
         Me.fctb.IndentBackColor = System.Drawing.Color.DimGray

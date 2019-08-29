@@ -54,8 +54,5 @@
         />
     </dependentAssembly>
   </dependency>-->
-
-	<fileAssociation xmlns="urn:schemas-microsoft-com:clickonce.v1" extension=".chunk" description="WoT chunk file" progid="wot.chunk" defaultIcon="XMLFile_789_32.ico" />
-	<fileAssociation xmlns="urn:schemas-microsoft-com:clickonce.v1" extension=".visual" description="WoT visual file" progid="wot.visual" defaultIcon="XMLFile_789_32.ico" />
 	
 </asmv1:assembly>

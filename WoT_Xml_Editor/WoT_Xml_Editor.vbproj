@@ -237,7 +237,6 @@
     <Content Include="icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="XMLFile_789_32.ico" />
     <None Include="Resources\109_AllAnnotations_Help_24x24_72.png" />
     <None Include="Resources\Redo_16x_32.bmp" />
     <None Include="Resources\Undo_16x_32.bmp" />

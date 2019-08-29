@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5A86574EC9BF4FFEAE4776C2E3D68D88"
+        "MsmKey" = "8:_1A328C75E8F34C299F769AF3B50E0605"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -34,12 +34,6 @@
         "Entry"
         {
         "MsmKey" = "8:_658924B73FCE4B0991481DB1D791679B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6A9B078B04BB4B149501BEB811222A79"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -187,10 +181,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5A86574EC9BF4FFEAE4776C2E3D68D88"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1A328C75E8F34C299F769AF3B50E0605"
             {
-            "SourcePath" = "8:..\\WoT_Xml_Editor\\XMLFile_789_32.ico"
-            "TargetName" = "8:XMLFile_789_32.ico"
+            "SourcePath" = "8:..\\WoT_Xml_Editor\\icon.ico"
+            "TargetName" = "8:icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_9AB7E741DA7549DF8EFEA695F17632C8"
             "Condition" = "8:"
@@ -214,6 +208,11 @@
             "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.11.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5F188955F59C575306B5F115D8AEBD13"
+                    {
+                    "Name" = "8:FastColoredTextBox.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FastColoredTextBox.dll"
             "TargetName" = "8:"
@@ -231,26 +230,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A9B078B04BB4B149501BEB811222A79"
-            {
-            "SourcePath" = "8:..\\WoT_Xml_Editor\\icon.ico"
-            "TargetName" = "8:icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_9AB7E741DA7549DF8EFEA695F17632C8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6EA755D4098D4519A54FE5816B00DD65"
@@ -296,52 +275,6 @@
         }
         "FileType"
         {
-            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_421CA11711D541E48265AFA6AD49A25E"
-            {
-            "Name" = "8:visual"
-            "Description" = "8:WoT binary xml visual file."
-            "Extensions" = "8:.visual"
-            "MIME" = "8:"
-            "Icon" = "8:_5A86574EC9BF4FFEAE4776C2E3D68D88"
-            "IconIndex" = "3:0"
-                "Command"
-                {
-                "Command" = "8:_658924B73FCE4B0991481DB1D791679B"
-                }
-                "Verbs"
-                {
-                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_6CC002E4F1B349F3BA1C0B555E80AB5E"
-                    {
-                    "Command" = "8:&Open"
-                    "Verb" = "8:open"
-                    "Arguments" = "8:\"%1\""
-                    "Order" = "3:0"
-                    }
-                }
-            }
-            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_DFC43526EB3E40D18EFA0A35C8449DE4"
-            {
-            "Name" = "8:chunk"
-            "Description" = "8:WoT binary xml chunk file."
-            "Extensions" = "8:.chunk"
-            "MIME" = "8:"
-            "Icon" = "8:_5A86574EC9BF4FFEAE4776C2E3D68D88"
-            "IconIndex" = "3:0"
-                "Command"
-                {
-                "Command" = "8:_658924B73FCE4B0991481DB1D791679B"
-                }
-                "Verbs"
-                {
-                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_63F26A2C4BA34947B15351C7ABCCE7A3"
-                    {
-                    "Command" = "8:&Open"
-                    "Verb" = "8:open"
-                    "Arguments" = "8:\"%1\""
-                    "Order" = "3:0"
-                    }
-                }
-            }
         }
         "Folder"
         {
@@ -418,7 +351,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WoT XML Editor"
         "ProductCode" = "8:{F922C352-D1A5-4380-B268-EEF3A503F140}"
-        "PackageCode" = "8:{F7BCE106-4D8E-46AE-A646-F0454E082E40}"
+        "PackageCode" = "8:{198BE0DE-58D5-4E9F-B036-BBEF2624D913}"
         "UpgradeCode" = "8:{403A7759-248E-40F8-950B-28E5A38DC8B8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -435,7 +368,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Decodes Binary World of Tanks XML files for editing and saving"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_5A86574EC9BF4FFEAE4776C2E3D68D88"
+        "ARPPRODUCTICON" = "8:_1A328C75E8F34C299F769AF3B50E0605"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -549,7 +482,7 @@
             "Target" = "8:_658924B73FCE4B0991481DB1D791679B"
             "Folder" = "8:_2E9335E5846C452C89CBAE419A4A88E1"
             "WorkingFolder" = "8:_9AB7E741DA7549DF8EFEA695F17632C8"
-            "Icon" = "8:_5A86574EC9BF4FFEAE4776C2E3D68D88"
+            "Icon" = "8:_1A328C75E8F34C299F769AF3B50E0605"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EEC453A8C583470CB473D7F67F307718"
