@@ -351,7 +351,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WoT XML Editor"
         "ProductCode" = "8:{F922C352-D1A5-4380-B268-EEF3A503F140}"
-        "PackageCode" = "8:{198BE0DE-58D5-4E9F-B036-BBEF2624D913}"
+        "PackageCode" = "8:{77CAB545-08EC-4478-9333-01A98C86192F}"
         "UpgradeCode" = "8:{403A7759-248E-40F8-950B-28E5A38DC8B8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -496,7 +496,7 @@
             "Target" = "8:_658924B73FCE4B0991481DB1D791679B"
             "Folder" = "8:_483E7A5FB6F84D17A57C68AACA0CA105"
             "WorkingFolder" = "8:_9AB7E741DA7549DF8EFEA695F17632C8"
-            "Icon" = "8:"
+            "Icon" = "8:_1A328C75E8F34C299F769AF3B50E0605"
             "Feature" = "8:"
             }
         }
