@@ -3,7 +3,7 @@
 
 ### Please see the Help file (the blue question mark) for more info.</br>
 
-<a href="https://imgur.com/b7Y6ISi"><img src="https://i.imgur.com/b7Y6ISi.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/g7gTCxU"><img src="https://i.imgur.com/g7gTCxU.png" title="source: imgur.com" /></a>
 
 ### Version 7:</br>
 Fixed a bug with "!--" comment tags.</br>
