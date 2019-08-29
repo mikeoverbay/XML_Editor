@@ -214,11 +214,6 @@
             "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.11.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5F188955F59C575306B5F115D8AEBD13"
-                    {
-                    "Name" = "8:FastColoredTextBox.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:FastColoredTextBox.dll"
             "TargetName" = "8:"
@@ -370,6 +365,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_483E7A5FB6F84D17A57C68AACA0CA105"
+                    {
+                    "Name" = "8:Coffee_"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_2AE6C5F096634B7C9BE832612809B577"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_9AB7E741DA7549DF8EFEA695F17632C8"
@@ -555,7 +561,7 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_658924B73FCE4B0991481DB1D791679B"
-            "Folder" = "8:_874D4D469567456493B0473F6C9EB1A2"
+            "Folder" = "8:_483E7A5FB6F84D17A57C68AACA0CA105"
             "WorkingFolder" = "8:_9AB7E741DA7549DF8EFEA695F17632C8"
             "Icon" = "8:"
             "Feature" = "8:"
