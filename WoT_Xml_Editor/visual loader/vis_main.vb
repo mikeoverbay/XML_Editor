@@ -33,9 +33,9 @@ Module vis_main
 		End Sub
 	End Class
 	Private Function fix_bad_tags(xmlString As String)
-        'box all primitive tags.. Dont think there will ever be over 30 :-)
+        'box all primitive tags.. Dont think there will ever be over 90 :-)
         xmlString = xmlString.Replace("<primitiveGroup> ", "<primitiveGroup>")
-        For i = 30 To 0 Step -1
+        For i = 90 To 0 Step -1
             Dim ast = xmlString.Replace("<primitiveGroup>" + i.ToString, "<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>")
             xmlString = ast
         Next

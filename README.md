@@ -5,7 +5,10 @@
 
 <a href="https://imgur.com/g7gTCxU"><img src="https://i.imgur.com/g7gTCxU.png" title="source: imgur.com" /></a>
 
-### Version 7:</br>
+### Version 8:
+Fixed renaming primitive groups.. It now handles 91 groups.
+
+### Version 7:
 Fixed a bug with "!--" comment tags.</br>
 Fixed changed the default font size to a smaller size.</br>
 Updated the Properties Tag string file (filtered_strings.txt).</br>
