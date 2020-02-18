@@ -50,6 +50,7 @@ Module vis_main
         'Next
         'Dim tst = xmlString.Replace("THISBAD", "diffuseMap2")
         'xmlString = tst
+
         Return xmlString
 	End Function
 
@@ -60,6 +61,26 @@ Module vis_main
         XML = XML.Replace("<_", "<G_")
         XML = XML.Replace("</_", "</G_")
         Dim MS As New MemoryStream()
+
+        XML = XML.Replace("rect1x4direction",
+                          "rect1x4 direction")
+
+        XML = XML.Replace("squaredirection",
+                          "square direction")
+
+        XML = XML.Replace("rightformfactor",
+                          "right formfactor")
+
+        XML = XML.Replace("rect1x3direction",
+                          "rect1x3 direction")
+
+        XML = XML.Replace("rect1x2direction",
+                          "rect1x2 direction")
+
+        XML = XML.Replace("rect1x6direction",
+                          "rect1x6 direction")
+
+
 
         Dim xmlsettings As New XmlWriterSettings
         xmlsettings.Indent = True

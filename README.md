@@ -5,6 +5,10 @@
 
 <a href="https://imgur.com/g7gTCxU"><img src="https://i.imgur.com/g7gTCxU.png" title="source: imgur.com" /></a>
 
+### Version 9:
+Fixed a problem with tags in some files.
+
+
 ### Version 8:
 Fixed renaming primitive groups.. It now handles 91 groups.
 
