@@ -216,6 +216,27 @@ Public Class frmMain
                 txt = txt.Replace("</xmlref>", "<xmlref>-->")
             End If
             'txt = txt + vbLf
+
+            txt = txt.Replace("rect1x4direction",
+                              "rect1x4 direction")
+
+            txt = txt.Replace("squaredirection",
+                              "square direction")
+
+            txt = txt.Replace("rightformfactor",
+                              "right formfactor")
+
+            txt = txt.Replace("rect1x3direction",
+                              "rect1x3 direction")
+
+            txt = txt.Replace("rect1x2direction",
+                              "rect1x2 direction")
+
+            txt = txt.Replace("rect1x6direction",
+                              "rect1x6 direction")
+
+
+
             IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
         End If
 
