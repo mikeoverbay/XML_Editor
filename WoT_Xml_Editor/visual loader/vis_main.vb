@@ -39,18 +39,6 @@ Module vis_main
             Dim ast = xmlString.Replace("<primitiveGroup>" + i.ToString, "<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>")
             xmlString = ast
         Next
-        'Dim tt2 = xmlString.Replace("diffuseMap2", "THISBAD")
-        'xmlString = tt2
-        '' box the messed up bad format
-        'For i = 0 To filterlist.Length - 1
-        '    Dim s = filterlist(i)
-        '    Dim ast = xmlString.Replace("<property>" + s, "<property>" + ControlChars.CrLf.ToCharArray() + "<Name>" + s + "</Name>")
-        '    xmlString = ast
-
-        'Next
-        'Dim tst = xmlString.Replace("THISBAD", "diffuseMap2")
-        'xmlString = tst
-
         Return xmlString
 	End Function
 
