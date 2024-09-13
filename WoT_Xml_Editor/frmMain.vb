@@ -1,17 +1,11 @@
 ﻿
 Imports System.IO
 Imports System.String
-Imports System.Text
+
 Imports FastColoredTextBoxNS
-Imports System.Linq
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.Collections.Generic
-Imports System.Runtime.Serialization.Formatters.Binary
+
 Imports System.Text.RegularExpressions
-Imports System.Drawing.Drawing2D
-Imports System.Xml
-Imports Microsoft.VisualBasic
+
 Imports System.Globalization
 
 Public Class frmMain
@@ -68,13 +62,9 @@ Public Class frmMain
 
         associate_files() 'broken in windows 10
         Me.KeyPreview = True    'so i catch keyboard before despatching it
-        'For i = 1 To arguments.Length - 1
-		'	fctb.Text += i.ToString + ":" + arguments(i) + vbCrLf
-		'Next
-		'If (Not System.IO.Directory.Exists(Application.StartupPath + "\temp")) Then
-		'	System.IO.Directory.CreateDirectory(Application.StartupPath + "\temp")
-        'End If
-        Dim fs As String = ""
+		IO.Directory.CreateDirectory(Application.StartupPath + "\temp")
+		'End If
+		Dim fs As String = ""
 		If arguments IsNot Nothing Then
             For i = 0 To arguments.Length - 1
                 fs += arguments(i) + vbCrLf
@@ -176,9 +166,9 @@ Public Class frmMain
             If Not key4 Is Nothing Then key3.Close()
         End Try
 
-        ' notify Windows that file associations have changed
-        SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0)
-        Return True
+		' notify Windows that file associations have changed
+		'SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0)
+		Return True
     End Function
 
 
