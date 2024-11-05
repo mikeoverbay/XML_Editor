@@ -62,7 +62,6 @@ Public Class frmMain
 
         associate_files() 'broken in windows 10
         Me.KeyPreview = True    'so i catch keyboard before despatching it
-		IO.Directory.CreateDirectory(Application.StartupPath + "\temp")
 		'End If
 		Dim fs As String = ""
 		If arguments IsNot Nothing Then
