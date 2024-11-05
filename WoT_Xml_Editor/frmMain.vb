@@ -132,16 +132,13 @@ Public Class frmMain
      ByVal className As String, ByVal description As String, _
      ByVal exeProgram As String) As Boolean
 
-        Const SHCNE_ASSOCCHANGED = &H8000000
-        Const SHCNF_IDLIST = 0
-
-        ' ensure that there is a leading dot
-        If extension.Substring(0, 1) <> "." Then
+		' ensure that there is a leading dot
+		If extension.Substring(0, 1) <> "." Then
             extension = "." & extension
         End If
 
-        Dim key1, key2, key3, key4 As Microsoft.Win32.RegistryKey
-        Try
+		Dim key1, key2, key3, key4 As Microsoft.Win32.RegistryKey
+		Try
             ' create a value for this key that contains the classname
             key1 = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(extension)
             key1.SetValue("", className)
@@ -160,11 +157,11 @@ Public Class frmMain
         Catch e As Exception
             Return False
         Finally
-            If Not key1 Is Nothing Then key1.Close()
-            If Not key2 Is Nothing Then key2.Close()
-            If Not key3 Is Nothing Then key3.Close()
-            If Not key4 Is Nothing Then key3.Close()
-        End Try
+			If key1 IsNot Nothing Then key1.Close()
+			If key2 IsNot Nothing Then key2.Close()
+			If key3 IsNot Nothing Then key3.Close()
+			If key4 IsNot Nothing Then key3.Close()
+		End Try
 
 		' notify Windows that file associations have changed
 		'SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0)
@@ -190,11 +187,8 @@ Public Class frmMain
     End Sub
 
     Private Sub SaveToolStripButton_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
-        SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|XML (*.xml)|*.xml|All Files (*.*)|*.*"
-        SaveFileDialog1.FileName = opened_file_name
-        If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
-            txt = txt.Replace("  ", "")
+		Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
+		txt = txt.Replace("  ", "")
             For i = 90 To 0 Step -1
                 Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
                 txt = ast
@@ -226,11 +220,12 @@ Public Class frmMain
                               "rect1x6 direction")
 
 
+		If IO.File.Exists(opened_file_name) Then
+			IO.File.WriteAllText(opened_file_name, txt)
+			MsgBox("file Saved", MsgBoxStyle.OkOnly, "File Saved")
+		End If
 
-            IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
-        End If
-
-    End Sub
+	End Sub
 
 	Private Sub CutToolStripButton_Click(sender As Object, e As EventArgs) Handles CutToolStripButton.Click
 		If fctb.Text.Length > 0 Then
@@ -451,6 +446,55 @@ Public Class frmMain
 		Dim s As String = Application.StartupPath
 		System.Diagnostics.Process.Start(s + "\html\help.html")
 	End Sub
+
+	Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
+
+	End Sub
+
+	Private Sub m_save_as_Click(sender As Object, e As EventArgs) Handles m_save_as.Click
+		SaveFileDialog1.Filter = "visual_processed (*.visual_processed)|*.visual_processed|model (*.model)|*.model|visual (*.visual)|*.visual|XML (*.xml)|*.xml|All Files (*.*)|*.*"
+		SaveFileDialog1.FileName = opened_file_name
+		If SaveFileDialog1.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+			Dim txt = fctb.Text.Replace("<shared>shared</shared>", "shared")
+			txt = txt.Replace("  ", "")
+			For i = 90 To 0 Step -1
+				Dim ast = txt.Replace("<primitiveGroup>" + ControlChars.CrLf.ToCharArray() + "<PG_ID>" + i.ToString + "</PG_ID>", "<primitiveGroup>" + i.ToString)
+				txt = ast
+			Next
+			txt = txt.Replace("><", ">" + vbCrLf + "<")
+			txt = txt.Replace(vbCrLf, vbLf)
+			If Not txt.Contains("!--<xmlref>") Then
+				txt = txt.Replace("<xmlref>", "<!--<xmlref>")
+				txt = txt.Replace("</xmlref>", "<xmlref>-->")
+			End If
+			'txt = txt + vbLf
+
+			txt = txt.Replace("rect1x4direction",
+							  "rect1x4 direction")
+
+			txt = txt.Replace("squaredirection",
+							  "square direction")
+
+			txt = txt.Replace("rightformfactor",
+							  "right formfactor")
+
+			txt = txt.Replace("rect1x3direction",
+							  "rect1x3 direction")
+
+			txt = txt.Replace("rect1x2direction",
+							  "rect1x2 direction")
+
+			txt = txt.Replace("rect1x6direction",
+							  "rect1x6 direction")
+
+
+
+			IO.File.WriteAllText(SaveFileDialog1.FileName, txt)
+		End If
+
+	End Sub
+
+
 
 	'Private Function Left(sFolder As String, p2 As Integer) As Object
 	'	Throw New NotImplementedException
